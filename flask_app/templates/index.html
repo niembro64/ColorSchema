@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+        <title>Index</title>
+    </head>
+    <body>
+        <p>user name: {{session['first_name']}} {{session['last_name']}}</p>
+        <p>user number: {{session['user_id']}}</p>
+        <form action="/log_out" method="POST">
+            <input
+                class="r"
+                type="submit"
+                name="log_out"
+                id="log_out"
+                value="log_out"
+            />
+        </form>
+
+        <a href="/index">index</a>
+        <a href="/user_login">user_login</a>
+        <a href="/show_all">show_all</a>
+        <a href="/add_one">add_one</a>
+        <h1>index</h1>
+    </body>
+</html>

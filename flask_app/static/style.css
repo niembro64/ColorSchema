@@ -1,0 +1,174 @@
+:root {
+    --cA1: rgba(0, 153, 255, 0.08);
+    --cA2: rgba(0, 153, 255, 0);
+    --cB1: rgba(0, 128, 107, 0.08);
+    --cB2: rgba(0, 128, 107, 0);
+
+    --chover: rgba(255, 0, 170, 0.158);
+}
+
+* {
+    font-family: sans-serif;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+}
+
+.flashes {
+    font-style: italic;
+}
+
+body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+}
+
+input[type="button"],
+select,
+option {
+    padding: 5px 10px;
+    margin: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(128, 128, 128, 0.308);
+    border-color: rgba(128, 128, 128, 0.144);
+    border-radius: 6px;
+}
+
+input[type="submit"] {
+    width: 150px;
+    padding: 10px 10px;
+    margin: 30px;
+    border-radius: 6px;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--chover);
+}
+
+input[type="submit"]:active {
+    background-color: white;
+}
+
+.unit {
+    flex: 1;
+    border-color: rgba(255, 255, 255, 0);
+    background: rgba(255, 255, 255, 0.089);
+    border-radius: 3px;
+    border-style: solid;
+    flex-direction: column;
+    padding: 0px 0px 15px 0px;
+    margin: 0px 10px 10px 10px;
+}
+
+h1 {
+    width: auto;
+    background: rgba(255, 255, 255, 0.137);
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.041);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+h2 {
+    width: auto;
+    background: rgba(255, 255, 255, 0.137);
+    padding: 10px;
+    margin: 0px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.r {
+    background: var(--cA1);
+    border-color: var(--cA2);
+}
+.l {
+    background: var(--cB1);
+    border-color: var(--cB2);
+}
+
+input,
+textarea {
+    background-color: rgba(226, 226, 226, 0.191);
+    border-color: rgba(226, 226, 226, 0.096);
+    padding: 5px;
+    margin: 0px 20px 0px 20px;
+    border-radius: 5px;
+    border-style: solid;
+}
+
+label {
+    padding: 15px 20px 3px 20px;
+}
+
+form {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+#main {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#top{
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.137);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#tl {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#tr{
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.x {
+
+    background-color: rgba(223, 189, 0, 0.212);
+}
+
+#delete, #edit, #like{
+    margin: 3px;
+}
+
+#show_row {
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.034);
+    padding: 0px 50px;
+    margin: 3px;
+    border-radius: 10px;
+}
+
+#ll{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+#rr {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 5px 20px 5px 20px; 
+    margin: 5px 20px 5px 20px; 
+}

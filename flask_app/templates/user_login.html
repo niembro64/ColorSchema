@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+    </head>
+    <body>
+        <div id="top">
+            <div id="tl">
+                <a href="/index">index</a>
+                <a href="/user_login">user_login</a>
+                <a href="/show_all">show_all</a>
+                <a href="/add_one">add_one</a>
+            </div>
+            <div id="tr">
+                <p>
+                    user name: {{session['first_name']}}
+                    {{session['last_name']}}
+                </p>
+                <p>user number: {{session['user_id']}}</p>
+                <form action="/log_out" method="POST">
+                    <input
+                        class="r"
+                        type="submit"
+                        name="log_out"
+                        id="log_out"
+                        value="log_out"
+                    />
+                </form>
+            </div>
+        </div>
+        <h1>user_login</h1>
+        <div id="main">
+            <div class="unit">
+                <h2 class="r">New User Registration</h2>
+                <form action="/register_user" method="POST">
+                    <label for="r_first_name">First Name:</label>
+                    <input type="text" name="r_first_name" />
+                    <label for="r_last_name">Last Name:</label>
+                    <input type="text" name="r_last_name" />
+                    <label for="r_email">Email:</label>
+                    <input type="text" name="r_email" />
+                    <label for="r_password">Password:</label>
+                    <input type="password" name="r_password" />
+                    <label for="r_confirm_password">Confirm Password:</label>
+                    <input type="password" name="r_confirm_password" />
+
+                    {% with messages = get_flashed_messages("r") %} {% if
+                    messages %}
+                    <ul class="flashes">
+                        {% for message in messages %} {% if message[0] ==
+                        "register" %}
+                        <li>{{ message[1] }}</li>
+                        {% endif %} {% endfor %}
+                    </ul>
+                    {% endif %} {% endwith %}
+
+                    <input
+                        class="r"
+                        type="submit"
+                        name="register"
+                        id="register"
+                        value="Register"
+                    />
+                </form>
+            </div>
+            <div class="unit">
+                <h2 class="l">User Login</h2>
+                <form action="/login_user" method="POST">
+                    <label for="l_email">Email:</label>
+                    <input type="text" name="l_email" />
+                    <label for="l_password">Password:</label>
+                    <input type="password" name="l_password" />
+
+                    {% with messages = get_flashed_messages("l") %} {% if
+                    messages %}
+                    <ul class="flashes">
+                        {% for message in messages %} {% if message[0] ==
+                        "login" %}
+                        <li>{{ message[1] }}</li>
+                        {% endif %} {% endfor %}
+                    </ul>
+                    {% endif %} {% endwith %}
+
+                    <input
+                        class="l"
+                        type="submit"
+                        name="login"
+                        id="login"
+                        value="Log In"
+                    />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

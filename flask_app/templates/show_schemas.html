@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='style.css') }}"
+        />
+        <title>02</title>
+    </head>
+    <body>
+        <div id="top">
+            <div id="tl">
+                <a href="/index">index</a>
+                <a href="/user_login">user_login</a>
+                <a href="/show_all">show_all</a>
+                <a href="/add_one">add_one</a>
+            </div>
+            <div id="tr">
+                <p>
+                    user name: {{session['first_name']}}
+                    {{session['last_name']}}
+                </p>
+                <p>user number: {{session['user_id']}}</p>
+                <form action="/log_out" method="POST">
+                    <input
+                        class="r"
+                        type="submit"
+                        name="log_out"
+                        id="log_out"
+                        value="log_out"
+                    />
+                </form>
+            </div>
+        </div>
+        <h1>show_all</h1>
+        
+        
+        {% for show in all_shows %}
+
+        <div id="show_row">
+            
+            <p>Created By User #{{show.user_id}}</p>
+            <p>| {{show.title}}</p>
+            <p>{{show.network}}</p>
+            <p>{{show.release_date}}</p>
+            <p>{{show.like}}</p>
+            <form action="/show_one/{{show.id}}">
+                <input type="submit" value="show" />
+            </form>
+            {% if show.user_id == session['user_id'] %}
+
+            <div class="mod">
+                <form action="/edit_one/{{show.id}}">
+                    <input class="l" type="submit" id="edit" value="edit" />
+                </form>
+
+                <form action="/fun_delete_one/{{show.id}}" method="POST">
+                    <input
+                        class="r"
+                        type="submit"
+                        name="delete"
+                        id="delete"
+                        value="delete"
+                    />
+                </form>
+            </div>
+
+            {% endif %} {% if show.user_id != session['user_id'] %}
+
+            <div class="like">
+                {% if show.like == 0 %}
+                <form action="/fun_like_show/{{show.id}}" method="POST">
+                    <input
+                        class="x"
+                        type="submit"
+                        name="like"
+                        id="like"
+                        value="like"
+                    />
+                </form>
+                {% endif %} {% if show.like == 1 %}
+                <form action="/fun_unlike_show/{{show.id}}" method="POST">
+                    <input
+                        class="x"
+                        type="submit"
+                        name="unlike"
+                        id="like"
+                        value="unlike"
+                    />
+                </form>
+                {% endif %}
+            </div>
+
+            {% endif %}
+        </div>
+
+        {% endfor %}
+    </body>
+</html>
