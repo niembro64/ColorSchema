@@ -1,0 +1,15 @@
+User-Specific Website Color Schemas
+
+AS A {User}
+I WANT TO BE ABLE TO {}
+SO I CAN {}
+
+--- User Login ---
+AS A {User}
+I WANT TO BE ABLE TO {Log In with Email & Password}
+SO I CAN {Interact As Myself Different than Others}
+
+--- Color Schemas ---
+AS A {User}
+I WANT TO BE ABLE TO {Create & Choose between Color Schemes}
+SO I CAN {Customize my Website Experience}
