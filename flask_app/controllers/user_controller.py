@@ -1,8 +1,7 @@
 from flask_app import app
 from flask import render_template, request, redirect, flash, session
-
 from flask_app.models.user import User
-from flask_app.models.show import Show
+from flask_app.models.schema import Schema
 
 
 from flask_bcrypt import Bcrypt
@@ -79,6 +78,7 @@ def fun_register():
     m = "fun_register"
     User.p(m)
 
+    User.p("XXXXXXXXXXXXXXX")
     if not User.validate_register(request.form):
         return redirect("/")
 
@@ -98,6 +98,7 @@ def fun_register():
     session['last_name'] = data["last_name"]
     session['password'] = data["password"]
     session['email'] = data["email"]
+
 
     User.p(session)
 

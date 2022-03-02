@@ -1,11 +1,11 @@
 from flask_app import app
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models import show
+from flask_app.models import schema
 from flask import flash
 import re
 
 
-db_name = "python_exam_3"
+db_name = "color_schema"
 
 class User:
     def __init__(self, data):
@@ -13,22 +13,28 @@ class User:
 
         self.first_name = data["first_name"]
         self.last_name = data["last_name"]
-        self.password = data["password"]
         self.email = data["email"]
+        self.password = data["password"]
 
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
+
+        self.schema_id = 1
 
 
 
     @classmethod
     def save_user(cls, data):
-        query = "INSERT INTO users (first_name, last_name, password, email, created_at, updated_at) VALUES (%(first_name)s, %(last_name)s, %(password)s, %(email)s, NOW(), NOW());"
+        m = "save_user"
+        User.p(m)        
+        query = "INSERT INTO users (first_name, last_name, password, email, created_at, updated_at, schema_id) VALUES (%(first_name)s, %(last_name)s, %(password)s, %(email)s, NOW(), NOW(), 1);"
         new_id = connectToMySQL(db_name).query_db(query, data)
         return new_id
 
     @classmethod
     def get_user(cls, data):
+        m = "get_user"
+        User.p(m)        
         query = "SELECT * FROM users WHERE id = %(id)s;"
         results = connectToMySQL(db_name).query_db(query, data)
         all_users = []
@@ -39,6 +45,8 @@ class User:
 
     @classmethod
     def get_user_by_email(cls, data):
+        m = "get_user_by_email"
+        User.p(m)        
         query = "SELECT * FROM users WHERE email = %(email)s;"
         results = connectToMySQL(db_name).query_db(query, data)
         all_users = []
@@ -49,6 +57,8 @@ class User:
 
     @classmethod
     def get_id_from_email(cls, data):
+        m = "get_id_from_email"
+        User.p(m)        
         query = "SELECT * FROM users WHERE email = %(email)s"
         results = connectToMySQL(
             db_name).query_db(query, data)
@@ -65,6 +75,8 @@ class User:
 
     @staticmethod
     def l_email_exists(data):
+        m = "l_email_exists"
+        User.p(m)        
         exists = False
         query = "SELECT * FROM users WHERE email = %(email)s;"
         results = connectToMySQL(
@@ -87,6 +99,8 @@ class User:
 
     @staticmethod
     def validate_register(reg_info):
+        m = "validate_register"
+        User.p(m)        
         is_valid = True
 
         # Is submitted
@@ -134,6 +148,8 @@ class User:
 
     @staticmethod
     def validate_login(log_info):
+        m = "validate_login"
+        User.p(m)        
         is_valid = True
 
         # Length checks
